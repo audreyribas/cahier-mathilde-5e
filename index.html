@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Cuaderno de Repaso — Mathilde P.</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--rouge:#E63946;--jaune:#FFBE0B;--vert:#06D6A0;--bleu:#4CC9F0;--violet:#7B2D8B;--orange:#FB5607;--rose:#FF6B9D;--fond:#FFF9F0;--papier:#FFFEF7;--lignes:#E8E0D0;--encre:#2D2D2D}
+*{box-sizing:border-box;margin:0;padding:0}
+@media print{body{background:#fff}.page{box-shadow:none;margin:0;border-radius:0;page-break-after:always}.no-print{display:none}}
+body{background:var(--fond);font-family:'Nunito',sans-serif;color:var(--encre);padding:20px;background-image:radial-gradient(circle at 10% 20%,rgba(255,190,11,.08) 0%,transparent 40%),radial-gradient(circle at 90% 80%,rgba(76,201,240,.08) 0%,transparent 40%)}
+.couverture{max-width:800px;margin:0 auto 40px;background:linear-gradient(135deg,#E63946 0%,#7B2D8B 40%,#4CC9F0 100%);border-radius:24px;padding:60px 40px;text-align:center;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(123,45,139,.35);color:#fff}
+.couverture::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,.08);border-radius:50%}
+.couverture::after{content:'';position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;background:rgba(255,255,255,.06);border-radius:50%}
+.couverture .drapeau{font-size:56px;margin-bottom:12px;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.couverture h1{font-family:'Fredoka One',cursive;font-size:3em;letter-spacing:2px;text-shadow:3px 3px 0 rgba(0,0,0,.2);margin-bottom:6px}
+.couverture .sous-titre{font-family:'Caveat',cursive;font-size:1.7em;opacity:.9;margin-bottom:20px}
+.couverture .eleve-badge{background:rgba(255,255,255,.2);border-radius:16px;padding:12px 28px;display:inline-block;margin:10px 0;border:2px solid rgba(255,255,255,.35);font-family:'Caveat',cursive;font-size:1.5em}
+.couverture .pills{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:22px}
+.couverture .pill{background:rgba(255,255,255,.2);border-radius:20px;padding:4px 13px;font-size:.8em;border:1.5px solid rgba(255,255,255,.3);font-weight:700}
+.progress-bar{max-width:800px;margin:0 auto 32px;background:#fff;border-radius:16px;padding:16px 24px;box-shadow:0 4px 16px rgba(0,0,0,.08);border:2px solid var(--lignes)}
+.progress-bar h3{font-family:'Fredoka One',cursive;color:var(--violet);margin-bottom:10px}
+.pb-track{background:var(--lignes);border-radius:10px;height:14px;overflow:hidden;margin-bottom:8px}
+.pb-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--vert),var(--bleu));transition:width .8s ease}
+.pb-labels{display:flex;justify-content:space-between;font-size:.78em;color:#888;font-weight:700}
+.page{max-width:800px;margin:0 auto 48px;background:var(--papier);border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,.10);overflow:hidden;position:relative;border:3px solid var(--lignes)}
+.page::before{content:'';position:absolute;left:0;top:0;bottom:0;width:36px;background:repeating-linear-gradient(to bottom,transparent 0,transparent 24px,var(--lignes) 24px,var(--lignes) 26px);border-right:3px solid var(--lignes);z-index:2}
+.page-header{display:flex;align-items:center;gap:12px;padding:18px 26px 14px 52px;border-bottom:3px solid var(--lignes);background:var(--papier);z-index:3}
+.badge-seance{font-family:'Fredoka One',cursive;font-size:.82em;padding:5px 13px;border-radius:20px;color:#fff;flex-shrink:0;letter-spacing:1px}
+.titre-page{font-family:'Fredoka One',cursive;font-size:1.35em;flex:1}
+.tag-theme{display:inline-block;font-size:.7em;padding:2px 8px;border-radius:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;margin-left:6px}
+.tag-voc{background:rgba(6,214,160,.15);color:#069E75}
+.tag-conj{background:rgba(76,201,240,.15);color:#2B9FCC}
+.tag-gram{background:rgba(251,86,7,.15);color:#C94400}
+.tag-cult{background:rgba(255,107,157,.15);color:#C04080}
+.page-body{padding:22px 26px 26px 52px;background-image:repeating-linear-gradient(transparent,transparent 27px,var(--lignes) 27px,var(--lignes) 28px);background-position:0 34px;line-height:28px}
+.lecon-box{background:rgba(255,255,255,.95);border-radius:14px;padding:14px 18px;margin-bottom:18px;border-left:5px solid;box-shadow:2px 2px 12px rgba(0,0,0,.06)}
+.lecon-box h3{font-family:'Fredoka One',cursive;font-size:1em;margin-bottom:9px;display:flex;align-items:center;gap:7px}
+.theme-voc{border-color:var(--vert);background:rgba(6,214,160,.05)}
+.theme-voc h3{color:#069E75}
+.theme-conj{border-color:var(--bleu);background:rgba(76,201,240,.05)}
+.theme-conj h3{color:#2B9FCC}
+.theme-gram{border-color:var(--orange);background:rgba(251,86,7,.05)}
+.theme-gram h3{color:#C94400}
+.theme-cult{border-color:var(--rose);background:rgba(255,107,157,.05)}
+.theme-cult h3{color:#C04080}
+.theme-exo{border-color:var(--violet);background:rgba(123,45,139,.04)}
+.theme-exo h3{color:var(--violet)}
+table.voc-table{width:100%;border-collapse:collapse;font-size:.9em;margin-top:7px}
+table.voc-table th{background:rgba(0,0,0,.06);padding:5px 9px;text-align:left;font-weight:800;font-size:.85em}
+table.voc-table td{padding:4px 9px;border-bottom:1px dashed rgba(0,0,0,.07)}
+table.voc-table tr:last-child td{border-bottom:none}
+table.voc-table .es{font-family:'Caveat',cursive;font-size:1.1em;color:var(--rouge);font-weight:700}
+table.voc-table .fr{color:#666}
+.conj-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.conj-col h4{font-family:'Fredoka One',cursive;font-size:.88em;text-align:center;padding:5px;border-radius:8px;margin-bottom:5px;color:#fff}
+.conj-col.ser h4{background:var(--rouge)}
+.conj-col.estar h4{background:var(--bleu)}
+.conj-col.tener h4{background:var(--orange)}
+.conj-col.haber h4{background:var(--violet)}
+.conj-col p{font-size:.86em;padding:2px 5px;border-radius:4px;display:flex;justify-content:space-between}
+.conj-col p:nth-child(odd){background:rgba(0,0,0,.03)}
+.conj-col span.pronom{color:#888;font-weight:600}
+.conj-col span.forme{font-family:'Caveat',cursive;font-size:1.1em;color:var(--rouge);font-weight:700}
+.regle{background:rgba(255,190,11,.1);border:2px dashed var(--jaune);border-radius:12px;padding:11px 15px;margin:9px 0;font-size:.9em;position:relative}
+.regle::before{content:'💡';position:absolute;top:-11px;left:11px;font-size:1.1em}
+.astuce{background:linear-gradient(135deg,rgba(255,190,11,.08),rgba(255,107,157,.08));border-radius:12px;padding:11px 15px 11px 44px;position:relative;margin-top:12px;font-size:.88em;font-style:italic;border:2px solid rgba(255,190,11,.25)}
+.astuce::before{content:'🌟';position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:1.3em}
+.culture-card{background:linear-gradient(135deg,rgba(255,107,157,.07),rgba(123,45,139,.05));border-radius:14px;padding:15px;border:2px solid rgba(255,107,157,.22);font-size:.9em}
+.culture-card .culture-titre{font-family:'Fredoka One',cursive;font-size:1.02em;color:var(--rose);margin-bottom:8px;display:flex;align-items:center;gap:7px}
+.culture-card p{line-height:1.65;margin-top:5px}
+
+/* ===== EXERCICE SYSTEM ===== */
+.exo-wrapper{margin-top:0}
+.exo-item{padding:7px 0;font-size:.9em;border-bottom:1px dotted var(--lignes);display:flex;flex-direction:column;gap:5px}
+.exo-item:last-child{border-bottom:none}
+.exo-q{display:flex;align-items:flex-start;gap:7px}
+.exo-num{font-family:'Fredoka One',cursive;color:#fff;background:var(--violet);width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.78em;flex-shrink:0;margin-top:2px}
+.answer-input{border:2px solid var(--lignes);border-radius:8px;padding:5px 10px;font-family:'Nunito',sans-serif;font-size:.9em;min-width:120px;flex:1;transition:border-color .2s;background:#fff;color:var(--encre)}
+.answer-input:focus{outline:none;border-color:var(--violet)}
+.answer-input.correct{border-color:var(--vert);background:rgba(6,214,160,.08);color:#069E75}
+.answer-input.wrong{border-color:var(--rouge);background:rgba(230,57,70,.07);color:var(--rouge)}
+.answer-input.disabled{pointer-events:none}
+.qcm-options{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px;margin-left:29px}
+.qcm-opt{border:2px solid var(--lignes);border-radius:20px;padding:4px 13px;font-size:.88em;font-family:'Caveat',cursive;font-size:1em;cursor:pointer;background:#fff;transition:all .15s;color:var(--encre)}
+.qcm-opt:hover{border-color:var(--violet);color:var(--violet)}
+.qcm-opt.selected{border-color:var(--violet);background:rgba(123,45,139,.1);color:var(--violet)}
+.qcm-opt.correct{border-color:var(--vert)!important;background:rgba(6,214,160,.12)!important;color:#069E75!important}
+.qcm-opt.wrong{border-color:var(--rouge)!important;background:rgba(230,57,70,.1)!important;color:var(--rouge)!important}
+.qcm-opt.reveal{border-color:var(--vert)!important;background:rgba(6,214,160,.08)!important;color:#069E75!important;pointer-events:none}
+.qcm-opt.disabled{pointer-events:none}
+.vf-options{display:flex;gap:10px;margin-left:29px;margin-top:4px}
+.vf-btn{border:2px solid var(--lignes);border-radius:8px;padding:4px 16px;cursor:pointer;font-weight:700;font-size:.9em;background:#fff;transition:all .15s}
+.vf-btn.selected{border-color:var(--violet);background:rgba(123,45,139,.1);color:var(--violet)}
+.vf-btn.correct{border-color:var(--vert)!important;background:rgba(6,214,160,.12)!important;color:#069E75!important}
+.vf-btn.wrong{border-color:var(--rouge)!important;background:rgba(230,57,70,.1)!important;color:var(--rouge)!important}
+.vf-btn.disabled{pointer-events:none}
+.feedback-msg{display:none;margin-left:29px;font-size:.83em;padding:3px 8px;border-radius:6px;margin-top:3px}
+.feedback-msg.correct{display:block;color:#069E75;background:rgba(6,214,160,.1)}
+.feedback-msg.wrong{display:block;color:var(--rouge);background:rgba(230,57,70,.08)}
+.submit-exo-btn{display:flex;align-items:center;gap:6px;background:var(--violet);color:#fff;border:none;border-radius:20px;padding:8px 20px;font-family:'Fredoka One',cursive;font-size:.9em;cursor:pointer;margin-top:12px;transition:all .2s}
+.submit-exo-btn:hover{background:#5e1e70;transform:scale(1.03)}
+.submit-exo-btn:disabled{background:#aaa;cursor:default;transform:none}
+.exo-score{display:none;margin-top:10px;padding:10px 14px;border-radius:10px;font-weight:700;font-size:.92em}
+.exo-score.good{background:rgba(6,214,160,.12);color:#069E75;border:2px solid rgba(6,214,160,.3);display:block}
+.exo-score.bad{background:rgba(230,57,70,.08);color:var(--rouge);border:2px solid rgba(230,57,70,.2);display:block}
+
+/* ===== TEXTE COMPRÉHENSION ===== */
+.texto{background:rgba(255,255,255,.9);border-radius:12px;padding:14px 18px;font-size:.91em;line-height:1.75;border:2px solid rgba(123,45,139,.12);margin-bottom:14px;font-family:'Georgia',serif}
+.texto .texto-titre{font-family:'Fredoka One',cursive;font-size:1.1em;color:var(--violet);margin-bottom:8px;font-family:'Fredoka One',cursive}
+
+/* ===== FIN CAHIER ===== */
+.fin-cahier{max-width:800px;margin:0 auto 20px;background:linear-gradient(135deg,var(--jaune),var(--orange));border-radius:24px;padding:36px;text-align:center;color:#fff;box-shadow:0 12px 40px rgba(251,86,7,.25)}
+.fin-cahier h2{font-family:'Fredoka One',cursive;font-size:2em;margin-bottom:8px}
+.signature{max-width:800px;margin:0 auto 48px;background:#fff;border-radius:16px;padding:20px 28px;border:2px solid var(--lignes);text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.07)}
+.signature p{font-family:'Caveat',cursive;font-size:1.3em;color:var(--violet)}
+
+@media (max-width:680px){
+  body{padding:10px;background-image:none}
+  .couverture{margin-bottom:24px;border-radius:18px;padding:34px 18px}
+  .couverture .drapeau{font-size:42px}
+  .couverture h1{font-size:2.05em;letter-spacing:0;text-shadow:2px 2px 0 rgba(0,0,0,.18);line-height:1.08}
+  .couverture .sous-titre{font-size:1.25em;line-height:1.2}
+  .couverture .eleve-badge{font-size:1.2em;padding:9px 18px}
+  .couverture .pills{gap:6px;margin-top:16px}
+  .couverture .pill{font-size:.76em;padding:4px 10px}
+  .progress-bar{margin-bottom:22px;padding:14px 16px;border-radius:14px}
+  .progress-bar h3{font-size:1em;line-height:1.3}
+  .pb-labels{font-size:.7em}
+  .page{margin:0 auto 26px;border-width:2px;border-radius:14px}
+  .page::before{width:0;border-right:none;background:none}
+  .page-header{align-items:flex-start;flex-wrap:wrap;gap:8px;padding:14px 14px 12px}
+  .badge-seance{font-size:.72em;padding:4px 10px;letter-spacing:.5px}
+  .titre-page{flex-basis:100%;order:2;font-size:1.08em;line-height:1.24}
+  .tag-theme{order:1;margin-left:auto;font-size:.62em;white-space:nowrap}
+  .page-body{padding:16px 14px 18px;background-position:0 28px;line-height:1.55}
+  .lecon-box,.culture-card,.texto{border-radius:12px;padding:12px 13px;margin-bottom:14px}
+  .lecon-box h3,.culture-card .culture-titre,.texto .texto-titre{font-size:.96em;line-height:1.25;align-items:flex-start}
+  .regle{padding:10px 12px;margin:8px 0;line-height:1.45}
+  .astuce{padding:10px 12px 10px 36px;line-height:1.45}
+  .conj-grid{grid-template-columns:1fr}
+  table.voc-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;font-size:.84em;line-height:1.35}
+  table.voc-table th,table.voc-table td{padding:5px 7px;vertical-align:top}
+  .exo-item{gap:7px;font-size:.88em}
+  .exo-q{flex-wrap:wrap;gap:6px}
+  .exo-num{width:20px;height:20px;font-size:.7em}
+  .answer-input{width:100%;min-width:0;flex-basis:100%;font-size:16px;padding:7px 9px}
+  .qcm-options,.vf-options{margin-left:0;gap:6px}
+  .qcm-opt,.vf-btn{flex:1 1 calc(50% - 6px);text-align:center;border-radius:14px;padding:7px 9px;line-height:1.2}
+  .feedback-msg{margin-left:0;line-height:1.35}
+  .submit-exo-btn{width:100%;justify-content:center;border-radius:14px;padding:10px 14px;line-height:1.2}
+  .exo-score{line-height:1.35}
+  [style*="grid-template-columns:repeat(3,1fr)"],
+  [style*="grid-template-columns:1fr 1fr 1fr"],
+  [style*="grid-template-columns:repeat(2,1fr)"],
+  [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
+  [style*="margin:5px 0 0 29px"]{margin-left:0!important}
+  .fin-cahier{border-radius:18px;padding:26px 18px;margin-bottom:16px}
+  .fin-cahier h2{font-size:1.45em;line-height:1.2}
+  .signature{border-radius:14px;padding:16px;margin-bottom:28px}
+  .signature p{font-size:1.08em;line-height:1.35}
+}
+
+@media (max-width:420px){
+  body{padding:7px}
+  .couverture{padding:28px 14px}
+  .couverture h1{font-size:1.74em}
+  .couverture .sous-titre{font-size:1.08em}
+  .page-header{padding:12px 12px 10px}
+  .page-body{padding:14px 11px 16px}
+  .lecon-box,.culture-card,.texto{padding:11px 10px}
+  .qcm-opt,.vf-btn{flex-basis:100%}
+  table.voc-table{font-size:.8em}
+}
+</style>
+</head>
+<body>
+
+<!-- COUVERTURE -->
+<div class="couverture">
+  <div class="drapeau">🇪🇸</div>
+  <h1>Mi Cuaderno de Repaso</h1>
+  <div class="sous-titre">Cahier de révision • Espagnol • 5ème</div>
+  <div class="eleve-badge">📖 Mathilde P.</div>
+  <div class="pills">
+    <span class="pill">📚 Séances 1–17 + Bonus</span>
+    <span class="pill">🔤 Vocabulaire</span>
+    <span class="pill">📝 Conjugaison</span>
+    <span class="pill">🎨 Culture & Civilisation</span>
+    <span class="pill">✅ Exercices interactifs</span>
+  </div>
+</div>
+
+<!-- BARRE DE PROGRESSION -->
+<div class="progress-bar no-print">
+  <h3>🏆 Ma progression — <span id="progressLabel">0 / 0 exercices validés</span></h3>
+  <div class="pb-track"><div class="pb-fill" id="pbFill" style="width:0%"></div></div>
+  <div class="pb-labels"><span>Début 🌱</span><span>Mi-parcours 🌿</span><span>Fin 🌟</span></div>
+  <p style="font-size:.8em;color:#888;margin-top:5px">La progression est sauvegardée automatiquement dans ton navigateur !</p>
+</div>
+
+<!-- ======================== SÉANCE 1 ======================== -->
+<div class="page" id="seance1">
+  <div class="page-header">
+    <span class="badge-seance" style="background:var(--rouge)">SÉANCE 1</span>
+    <span class="titre-page">Los saludos — Les salutations 🗣️</span>
+    <span class="tag-theme tag-voc">Vocabulaire</span>
+  </div>
+  <div class="page-body">
+    <div class="lecon-box theme-voc">
+      <h3>📖 Le cours</h3>
+      <table class="voc-table">
+        <tr><th>Espagnol</th><th>Français</th></tr>
+        <tr><td class="es">¡Hola!</td><td class="fr">Bonjour / Salut !</td></tr>
+        <tr><td class="es">¿Cómo estás?</td><td class="fr">Comment vas-tu ?</td></tr>
+        <tr><td class="es">¿Qué tal?</td><td class="fr">Comment ça va ?</td></tr>
+        <tr><td class="es">Bien, gracias / Muy bien</td><td class="fr">Bien, merci / Très bien</td></tr>
+        <tr><td class="es">Hasta mañana / Adiós</td><td class="fr">À demain / Au revoir</td></tr>
+        <tr><td class="es">Por favor / Gracias</td><td class="fr">S'il te plaît / Merci</td></tr>
+        <tr><td class="es">De nada / Lo siento</td><td class="fr">De rien / Désolé(e)</td></tr>
+        <tr><td class="es">Perdón / Disculpe</td><td class="fr">Pardon / Excusez-moi</td></tr>
+      </table>
+      <div class="astuce">Les ¿ et ¡ s'écrivent au <strong>début ET à la fin</strong> des phrases en espagnol !</div>
+    </div>
+    <div class="lecon-box theme-exo">
+      <h3>✏️ Exercice — Traduis en espagnol</h3>
+      <div class="exo-wrapper" data-exo="s1e1" data-score="0">
+        <div class="exo-item" data-idx="0">
+          <div class="exo-q"><span class="exo-num">1</span><span>Comment vas-tu ? →</span><input class="answer-input" type="text" placeholder="ta réponse…" data-answer="cómo estás|como estas|¿cómo estás?"></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="1">
+          <div class="exo-q"><span class="exo-num">2</span><span>Très bien, merci ! →</span><input class="answer-input" type="text" placeholder="ta réponse…" data-answer="muy bien gracias|muy bien, gracias|¡muy bien, gracias!"></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="2">
+          <div class="exo-q"><span class="exo-num">3</span><span>À demain ! →</span><input class="answer-input" type="text" placeholder="ta réponse…" data-answer="hasta mañana|hasta manana"></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="3">
+          <div class="exo-q"><span class="exo-num">4</span><span>De rien →</span><input class="answer-input" type="text" placeholder="ta réponse…" data-answer="de nada"></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="4">
+          <div class="exo-q"><span class="exo-num">5</span><span>"¿Qué tal?" veut dire :</span></div>
+          <div class="qcm-options" data-correct="comment ça va ?">
+            <span class="qcm-opt" data-val="à bientôt">À bientôt</span>
+            <span class="qcm-opt" data-val="comment ça va ?">Comment ça va ?</span>
+            <span class="qcm-opt" data-val="merci">Merci</span>
+          </div>
+          <div class="feedback-msg"></div>
+        </div>
+        <button class="submit-exo-btn" onclick="submitExo(this)">✔ Valider mes réponses</button>
+        <div class="exo-score"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== SÉANCE 2 ======================== -->
+<div class="page" id="seance2">
+  <div class="page-header">
+    <span class="badge-seance" style="background:var(--orange)">SÉANCE 2</span>
+    <span class="titre-page">Los números — Les chiffres 🔢</span>
+    <span class="tag-theme tag-voc">Vocabulaire</span>
+  </div>
+  <div class="page-body">
+    <div class="lecon-box theme-voc">
+      <h3>📖 Les chiffres de 0 à 20</h3>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:7px;font-size:.9em">
+        <span>0 → <strong style="color:var(--rouge);font-family:'Caveat',cursive;font-size:1.15em">cero</strong></span>
+        <span>1 → <strong style="color:var(--rouge);font-family:'Caveat',cursive;font-size:1.15em">uno</strong></span>
+        <span>2 → <strong style="color:var(--rouge);font-family:'Caveat',cursive;font-size:1.15em">dos</strong></span>
+        <span>3 → <strong style="color:var(--rouge);font-family:'Caveat',cursive;font-size:1.15em">tres</strong></span>
+        <span>4 → <strong style="color:var(--rouge);font-family:'Caveat',cursive;font-size:1.15em">cuatro</strong></span>
+        <span>5 → <strong style="color:var(--rouge);font-family:'Caveat',cursive;font-size:1.15em">cinco</strong></span>
+        <span>6 → <strong style="color:var(--rouge);font-family:'Caveat',cursive;font-size:1.15em">seis</strong></span>
+        <span>7 → <strong style="color:var(--rouge);font-family:'Caveat',cursive;font-size:1.15em">siete</strong></span>
+        <span>8 → <strong style="color:var(--rouge);font-family:'Caveat',cursive;font-size:1.15em">ocho</strong></span>
+        <span>9 → <strong style="color:var(--rouge);font-family:'Caveat',cursive;font-size:1.15em">nueve</strong></span>
+        <span>10 → <strong style="color:var(--rouge);font-family:'Caveat',cursive;font-size:1.15em">diez</strong></span>
+        <span>11 → <strong style="color:var(--rouge);font-family:'Caveat',cursive;font-size:1.15em">once</strong></span>
+        <span>12 → <strong style="color:var(--rouge);font-family:'Caveat',cursive;font-size:1.15em">doce</strong></span>
+        <span>13 → <strong style="color:var(--rouge);font-family:'Caveat',cursive;font-size:1.15em">trece</strong></span>
+        <span>14 → <strong style="color:var(--rouge);font-family:'Caveat',cursive;font-size:1.15em">catorce</strong></span>
+        <span>15 → <strong style="color:var(--rouge);font-family:'Caveat',cursive;font-size:1.15em">quince</strong></span>
+        <span>16 → <strong style="color:var(--rouge);font-family:'Caveat',cursive;font-size:1.15em">dieciséis</strong></span>
+        <span>17 → <strong style="color:var(--rouge);font-family:'Caveat',cursive;font-size:1.15em">diecisiete</strong></span>
+        <span>20 → <strong style="color:var(--rouge);font-family:'Caveat',cursive;font-size:1.15em">veinte</strong></span>
+        <span>30 → <strong style="color:var(--rouge);font-family:'Caveat',cursive;font-size:1.15em">treinta</strong></span>
+        <span>50 → <strong style="color:var(--rouge);font-family:'Caveat',cursive;font-size:1.15em">cincuenta</strong></span>
+        <span>100 → <strong style="color:var(--rouge);font-family:'Caveat',cursive;font-size:1.15em">cien</strong></span>
+      </div>
+      <div class="regle">21 = <em>veintiuno</em> · 31 = <em>treinta y uno</em> · 47 = <em>cuarenta y siete</em></div>
+    </div>
+    <div class="lecon-box theme-exo">
+      <h3>✏️ Exercice — Calculs en espagnol !</h3>
+      <div class="exo-wrapper" data-exo="s2e1">
+        <div class="exo-item" data-idx="0">
+          <div class="exo-q"><span class="exo-num">1</span><span>siete + tres = ?</span>
+          <div class="qcm-options" data-correct="diez"><span class="qcm-opt" data-val="nueve">nueve</span><span class="qcm-opt" data-val="diez">diez</span><span class="qcm-opt" data-val="once">once</span></div></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="1">
+          <div class="exo-q"><span class="exo-num">2</span><span>47 en toutes lettres →</span><input class="answer-input" type="text" placeholder="ta réponse…" data-answer="cuarenta y siete"></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="2">
+          <div class="exo-q"><span class="exo-num">3</span><span>83 en toutes lettres →</span><input class="answer-input" type="text" placeholder="ta réponse…" data-answer="ochenta y tres"></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="3">
+          <div class="exo-q"><span class="exo-num">4</span><span>"quince" = ?</span>
+          <div class="qcm-options" data-correct="15"><span class="qcm-opt" data-val="13">13</span><span class="qcm-opt" data-val="14">14</span><span class="qcm-opt" data-val="15">15</span></div></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <button class="submit-exo-btn" onclick="submitExo(this)">✔ Valider mes réponses</button>
+        <div class="exo-score"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== SÉANCE 3 — COULEURS ======================== -->
+<div class="page" id="seance3">
+  <div class="page-header">
+    <span class="badge-seance" style="background:var(--rose)">SÉANCE 3</span>
+    <span class="titre-page">Los colores & El cuerpo 🎨🧍</span>
+    <span class="tag-theme tag-voc">Vocabulaire</span>
+  </div>
+  <div class="page-body">
+    <div class="lecon-box theme-voc">
+      <h3>🌈 Les couleurs — Los colores</h3>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:7px;font-size:.88em">
+        <span>rouge → <strong style="font-family:'Caveat',cursive;color:var(--rouge)">rojo/roja</strong></span>
+        <span>bleu → <strong style="font-family:'Caveat',cursive;color:var(--rouge)">azul</strong></span>
+        <span>vert → <strong style="font-family:'Caveat',cursive;color:var(--rouge)">verde</strong></span>
+        <span>jaune → <strong style="font-family:'Caveat',cursive;color:var(--rouge)">amarillo/a</strong></span>
+        <span>orange → <strong style="font-family:'Caveat',cursive;color:var(--rouge)">naranja</strong></span>
+        <span>violet → <strong style="font-family:'Caveat',cursive;color:var(--rouge)">morado/a</strong></span>
+        <span>rose → <strong style="font-family:'Caveat',cursive;color:var(--rouge)">rosa</strong></span>
+        <span>blanc → <strong style="font-family:'Caveat',cursive;color:var(--rouge)">blanco/a</strong></span>
+        <span>noir → <strong style="font-family:'Caveat',cursive;color:var(--rouge)">negro/a</strong></span>
+        <span>gris → <strong style="font-family:'Caveat',cursive;color:var(--rouge)">gris</strong></span>
+      </div>
+      <div class="regle">Les couleurs s'accordent avec le nom : <em>un gato negro</em> / <em>una silla roja</em>. Certaines sont invariables : azul, verde, rosa, naranja, gris.</div>
+    </div>
+    <div class="lecon-box theme-exo">
+      <h3>✏️ Exercice — Quelle couleur ?</h3>
+      <div class="exo-wrapper" data-exo="s3e1">
+        <div class="exo-item" data-idx="0">
+          <div class="exo-q"><span class="exo-num">1</span><span>"amarillo" = ?</span>
+          <div class="qcm-options" data-correct="jaune"><span class="qcm-opt" data-val="rouge">rouge</span><span class="qcm-opt" data-val="jaune">jaune</span><span class="qcm-opt" data-val="vert">vert</span></div></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="1">
+          <div class="exo-q"><span class="exo-num">2</span><span>La couleur du ciel → </span><input class="answer-input" type="text" placeholder="en espagnol…" data-answer="azul"></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="2">
+          <div class="exo-q"><span class="exo-num">3</span><span>Un chat noir → un gato</span><input class="answer-input" type="text" placeholder="couleur accordée…" data-answer="negro"></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="3">
+          <div class="exo-q"><span class="exo-num">4</span><span>"morado" = ?</span>
+          <div class="qcm-options" data-correct="violet"><span class="qcm-opt" data-val="rose">rose</span><span class="qcm-opt" data-val="orange">orange</span><span class="qcm-opt" data-val="violet">violet</span></div></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <button class="submit-exo-btn" onclick="submitExo(this)">✔ Valider mes réponses</button>
+        <div class="exo-score"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== SÉANCES 4-9 RÉSUMÉ ======================== -->
+<div class="page" id="seance4">
+  <div class="page-header">
+    <span class="badge-seance" style="background:var(--bleu)">SÉANCES 4–9</span>
+    <span class="titre-page">Alphabet, Météo, Jours, Famille 📅👨‍👩‍👧</span>
+    <span class="tag-theme tag-voc">Vocabulaire</span>
+  </div>
+  <div class="page-body">
+    <div class="lecon-box theme-voc">
+      <h3>🔤 L'alphabet • Lettre spéciale :</h3>
+      <div style="font-family:'Caveat',cursive;font-size:1.3em;color:var(--rouge);letter-spacing:3px;background:rgba(76,201,240,.06);padding:8px 12px;border-radius:8px">A B C D E F G H I J K L LL M N <span style="font-size:1.3em;color:var(--violet)">Ñ</span> O P Q R S T U V W X Y Z</div>
+      <div class="regle">La <strong>Ñ</strong> est uniquement espagnole ! <em>España, mañana, señor</em> · Le <strong>H</strong> est toujours muet : <em>hola</em> = "ola"</div>
+    </div>
+    <div class="lecon-box theme-voc">
+      <h3>☔ Météo · 📅 Jours · 👨‍👩‍👧 Famille</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;font-size:.85em;margin-top:7px">
+        <div>
+          <p style="font-weight:700;color:var(--bleu);margin-bottom:4px">Météo</p>
+          <p>☀️ <em>Hace sol</em></p><p>🌡️ <em>Hace calor</em></p><p>❄️ <em>Hace frío</em></p>
+          <p>🌧️ <em>Llueve</em></p><p>☁️ <em>Está nublado</em></p>
+        </div>
+        <div>
+          <p style="font-weight:700;color:var(--orange);margin-bottom:4px">Jours</p>
+          <p><em>lunes</em> (lundi)</p><p><em>martes</em> (mardi)</p><p><em>miércoles</em></p>
+          <p><em>jueves</em> (jeudi)</p><p><em>viernes</em></p><p><em>sábado</em></p><p><em>domingo</em></p>
+        </div>
+        <div>
+          <p style="font-weight:700;color:var(--rose);margin-bottom:4px">Famille</p>
+          <p><em>el padre/la madre</em></p><p><em>el hermano/a</em></p>
+          <p><em>el abuelo/a</em></p><p><em>el tío/la tía</em></p>
+          <p><em>el primo/a</em></p><p><em>el hijo/a</em></p>
+        </div>
+      </div>
+    </div>
+    <div class="lecon-box theme-exo">
+      <h3>✏️ Exercice — Vocabulaire général</h3>
+      <div class="exo-wrapper" data-exo="s4e1">
+        <div class="exo-item" data-idx="0">
+          <div class="exo-q"><span class="exo-num">1</span><span>"Il pleut" en espagnol →</span><input class="answer-input" type="text" data-answer="llueve|está lloviendo|esta lloviendo"></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="1">
+          <div class="exo-q"><span class="exo-num">2</span><span>Le vendredi en espagnol →</span><input class="answer-input" type="text" data-answer="viernes"></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="2">
+          <div class="exo-q"><span class="exo-num">3</span><span>"el abuelo" = ?</span>
+          <div class="qcm-options" data-correct="le grand-père"><span class="qcm-opt" data-val="l'oncle">l'oncle</span><span class="qcm-opt" data-val="le grand-père">le grand-père</span><span class="qcm-opt" data-val="le cousin">le cousin</span></div></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="3">
+          <div class="exo-q"><span class="exo-num">4</span><span>Quelle lettre n'existe pas en français ? →</span><input class="answer-input" type="text" data-answer="ñ|la ñ"></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <button class="submit-exo-btn" onclick="submitExo(this)">✔ Valider mes réponses</button>
+        <div class="exo-score"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== SÉANCES 10-11 — TENER / HABER ======================== -->
+<div class="page" id="seance10">
+  <div class="page-header">
+    <span class="badge-seance" style="background:var(--bleu)">SÉANCES 10–11</span>
+    <span class="titre-page">Tener & Haber au présent 🔵</span>
+    <span class="tag-theme tag-conj">Conjugaison</span>
+  </div>
+  <div class="page-body">
+    <div class="lecon-box theme-conj">
+      <h3>📖 Conjugaison</h3>
+      <div class="conj-grid">
+        <div class="conj-col tener"><h4>TENER (avoir/tenir)</h4>
+          <p><span class="pronom">yo</span><span class="forme">tengo</span></p>
+          <p><span class="pronom">tú</span><span class="forme">tienes</span></p>
+          <p><span class="pronom">él/ella</span><span class="forme">tiene</span></p>
+          <p><span class="pronom">nosotros</span><span class="forme">tenemos</span></p>
+          <p><span class="pronom">vosotros</span><span class="forme">tenéis</span></p>
+          <p><span class="pronom">ellos</span><span class="forme">tienen</span></p>
+        </div>
+        <div class="conj-col haber"><h4>HABER (auxiliaire)</h4>
+          <p><span class="pronom">yo</span><span class="forme">he</span></p>
+          <p><span class="pronom">tú</span><span class="forme">has</span></p>
+          <p><span class="pronom">él/ella</span><span class="forme">ha</span></p>
+          <p><span class="pronom">nosotros</span><span class="forme">hemos</span></p>
+          <p><span class="pronom">vosotros</span><span class="forme">habéis</span></p>
+          <p><span class="pronom">ellos</span><span class="forme">han</span></p>
+        </div>
+      </div>
+      <div class="regle"><strong>TENER</strong> = avoir des choses → <em>Tengo un perro</em> · <strong>HAY</strong> = il y a → <em>Hay un gato</em></div>
+    </div>
+    <div class="lecon-box theme-exo">
+      <h3>✏️ Exercice — Conjugue TENER ou écris HAY</h3>
+      <div class="exo-wrapper" data-exo="s10e1">
+        <div class="exo-item" data-idx="0"><div class="exo-q"><span class="exo-num">1</span><span>Yo _____ un hermano. →</span><input class="answer-input" type="text" data-answer="tengo"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="1"><div class="exo-q"><span class="exo-num">2</span><span>Ella _____ 12 años. →</span><input class="answer-input" type="text" data-answer="tiene"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="2"><div class="exo-q"><span class="exo-num">3</span><span>_____ muchos estudiantes en la clase. →</span><input class="answer-input" type="text" data-answer="hay"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="3"><div class="exo-q"><span class="exo-num">4</span><span>Nosotros _____ una casa grande. →</span><input class="answer-input" type="text" data-answer="tenemos"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="4"><div class="exo-q"><span class="exo-num">5</span><span>¿Cuántos años _____ tú? →</span><input class="answer-input" type="text" data-answer="tienes"></div><div class="feedback-msg"></div></div>
+        <button class="submit-exo-btn" onclick="submitExo(this)">✔ Valider mes réponses</button>
+        <div class="exo-score"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== SÉANCE 12 — PRÉSENT ======================== -->
+<div class="page" id="seance12">
+  <div class="page-header">
+    <span class="badge-seance" style="background:var(--bleu)">SÉANCE 12</span>
+    <span class="titre-page">Le présent de l'indicatif 📝</span>
+    <span class="tag-theme tag-conj">Conjugaison</span>
+  </div>
+  <div class="page-body">
+    <div class="lecon-box theme-conj">
+      <h3>📖 Les 3 groupes de verbes réguliers</h3>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:7px">
+        <div style="background:rgba(230,57,70,.06);border-radius:9px;padding:9px;font-size:.84em">
+          <h4 style="font-family:'Fredoka One',cursive;color:var(--rouge);text-align:center;margin-bottom:5px">-AR → hablar</h4>
+          <p>yo → <strong style="font-family:'Caveat',cursive;color:var(--rouge)">hablo</strong></p>
+          <p>tú → <strong style="font-family:'Caveat',cursive;color:var(--rouge)">hablas</strong></p>
+          <p>él → <strong style="font-family:'Caveat',cursive;color:var(--rouge)">habla</strong></p>
+          <p>nos → <strong style="font-family:'Caveat',cursive;color:var(--rouge)">hablamos</strong></p>
+          <p>vos → <strong style="font-family:'Caveat',cursive;color:var(--rouge)">habláis</strong></p>
+          <p>ellos → <strong style="font-family:'Caveat',cursive;color:var(--rouge)">hablan</strong></p>
+        </div>
+        <div style="background:rgba(76,201,240,.06);border-radius:9px;padding:9px;font-size:.84em">
+          <h4 style="font-family:'Fredoka One',cursive;color:#2B9FCC;text-align:center;margin-bottom:5px">-ER → comer</h4>
+          <p>yo → <strong style="font-family:'Caveat',cursive;color:#2B9FCC">como</strong></p>
+          <p>tú → <strong style="font-family:'Caveat',cursive;color:#2B9FCC">comes</strong></p>
+          <p>él → <strong style="font-family:'Caveat',cursive;color:#2B9FCC">come</strong></p>
+          <p>nos → <strong style="font-family:'Caveat',cursive;color:#2B9FCC">comemos</strong></p>
+          <p>vos → <strong style="font-family:'Caveat',cursive;color:#2B9FCC">coméis</strong></p>
+          <p>ellos → <strong style="font-family:'Caveat',cursive;color:#2B9FCC">comen</strong></p>
+        </div>
+        <div style="background:rgba(6,214,160,.06);border-radius:9px;padding:9px;font-size:.84em">
+          <h4 style="font-family:'Fredoka One',cursive;color:#069E75;text-align:center;margin-bottom:5px">-IR → vivir</h4>
+          <p>yo → <strong style="font-family:'Caveat',cursive;color:#069E75">vivo</strong></p>
+          <p>tú → <strong style="font-family:'Caveat',cursive;color:#069E75">vives</strong></p>
+          <p>él → <strong style="font-family:'Caveat',cursive;color:#069E75">vive</strong></p>
+          <p>nos → <strong style="font-family:'Caveat',cursive;color:#069E75">vivimos</strong></p>
+          <p>vos → <strong style="font-family:'Caveat',cursive;color:#069E75">vivís</strong></p>
+          <p>ellos → <strong style="font-family:'Caveat',cursive;color:#069E75">viven</strong></p>
+        </div>
+      </div>
+      <table class="voc-table" style="margin-top:10px;font-size:.83em">
+        <tr><th>Irrégulier</th><th>yo</th><th>tú</th><th>él/ella</th><th>Traduction</th></tr>
+        <tr><td class="es">ir</td><td style="color:var(--rouge);font-family:'Caveat',cursive">voy</td><td>vas</td><td>va</td><td>aller</td></tr>
+        <tr><td class="es">hacer</td><td style="color:var(--rouge);font-family:'Caveat',cursive">hago</td><td>haces</td><td>hace</td><td>faire</td></tr>
+        <tr><td class="es">querer</td><td style="color:var(--rouge);font-family:'Caveat',cursive">quiero</td><td>quieres</td><td>quiere</td><td>vouloir</td></tr>
+        <tr><td class="es">poder</td><td style="color:var(--rouge);font-family:'Caveat',cursive">puedo</td><td>puedes</td><td>puede</td><td>pouvoir</td></tr>
+      </table>
+    </div>
+    <div class="lecon-box theme-exo">
+      <h3>✏️ Exercice — Conjugue au présent</h3>
+      <div class="exo-wrapper" data-exo="s12e1">
+        <div class="exo-item" data-idx="0"><div class="exo-q"><span class="exo-num">1</span><span>Yo _____ (hablar) español.</span><input class="answer-input" type="text" data-answer="hablo"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="1"><div class="exo-q"><span class="exo-num">2</span><span>Nosotros _____ (comer) a las dos.</span><input class="answer-input" type="text" data-answer="comemos"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="2"><div class="exo-q"><span class="exo-num">3</span><span>Ella _____ (hacer) los deberes.</span><input class="answer-input" type="text" data-answer="hace"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="3"><div class="exo-q"><span class="exo-num">4</span><span>Ellos _____ (ir) al colegio.</span><input class="answer-input" type="text" data-answer="van"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="4"><div class="exo-q"><span class="exo-num">5</span><span>Vosotros _____ (vivir) en Madrid.</span><input class="answer-input" type="text" data-answer="vivís|vivis"></div><div class="feedback-msg"></div></div>
+        <button class="submit-exo-btn" onclick="submitExo(this)">✔ Valider mes réponses</button>
+        <div class="exo-score"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== SÉANCE 13 — SER / ESTAR ======================== -->
+<div class="page" id="seance13">
+  <div class="page-header">
+    <span class="badge-seance" style="background:var(--rouge)">SÉANCE 13</span>
+    <span class="titre-page">SER vs ESTAR — Les deux "être" 🔴🔵</span>
+    <span class="tag-theme tag-conj">Conjugaison</span>
+  </div>
+  <div class="page-body">
+    <div class="lecon-box theme-conj">
+      <h3>📖 Conjugaison + emplois</h3>
+      <div class="conj-grid">
+        <div class="conj-col ser"><h4>SER → identité/définition</h4>
+          <p><span class="pronom">yo</span><span class="forme">soy</span></p>
+          <p><span class="pronom">tú</span><span class="forme">eres</span></p>
+          <p><span class="pronom">él/ella</span><span class="forme">es</span></p>
+          <p><span class="pronom">nosotros</span><span class="forme">somos</span></p>
+          <p><span class="pronom">vosotros</span><span class="forme">sois</span></p>
+          <p><span class="pronom">ellos</span><span class="forme">son</span></p>
+        </div>
+        <div class="conj-col estar"><h4>ESTAR → état/lieu</h4>
+          <p><span class="pronom">yo</span><span class="forme">estoy</span></p>
+          <p><span class="pronom">tú</span><span class="forme">estás</span></p>
+          <p><span class="pronom">él/ella</span><span class="forme">está</span></p>
+          <p><span class="pronom">nosotros</span><span class="forme">estamos</span></p>
+          <p><span class="pronom">vosotros</span><span class="forme">estáis</span></p>
+          <p><span class="pronom">ellos</span><span class="forme">están</span></p>
+        </div>
+      </div>
+      <div class="astuce"><strong>SER</strong> = ce qui ne change pas (nationalité, profession, caractère) · <strong>ESTAR</strong> = ce qui peut changer (humeur, lieu, état physique)</div>
+    </div>
+    <div class="lecon-box theme-exo">
+      <h3>✏️ Exercice — SER ou ESTAR ?</h3>
+      <div class="exo-wrapper" data-exo="s13e1">
+        <div class="exo-item" data-idx="0"><div class="exo-q"><span class="exo-num">1</span><span>Yo _____ estudiante. (identité)</span><input class="answer-input" type="text" data-answer="soy"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="1"><div class="exo-q"><span class="exo-num">2</span><span>El libro _____ sobre la mesa. (lieu)</span><input class="answer-input" type="text" data-answer="está|esta"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="2"><div class="exo-q"><span class="exo-num">3</span><span>Ella _____ española. (nationalité)</span><input class="answer-input" type="text" data-answer="es"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="3">
+          <div class="exo-q"><span class="exo-num">4</span><span>Nosotros _____ contentos hoy. (état)</span></div>
+          <div class="qcm-options" data-correct="estamos"><span class="qcm-opt" data-val="somos">somos</span><span class="qcm-opt" data-val="estamos">estamos</span><span class="qcm-opt" data-val="son">son</span></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="4"><div class="exo-q"><span class="exo-num">5</span><span>Madrid _____ la capital de España. (définition)</span><input class="answer-input" type="text" data-answer="es"></div><div class="feedback-msg"></div></div>
+        <button class="submit-exo-btn" onclick="submitExo(this)">✔ Valider mes réponses</button>
+        <div class="exo-score"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== SÉANCES 14-15 — PASSÉ COMPOSÉ ======================== -->
+<div class="page" id="seance14">
+  <div class="page-header">
+    <span class="badge-seance" style="background:var(--orange)">SÉANCES 14–15</span>
+    <span class="titre-page">Le passé composé — El pretérito perfecto ⏪</span>
+    <span class="tag-theme tag-conj">Conjugaison</span>
+  </div>
+  <div class="page-body">
+    <div class="lecon-box theme-conj">
+      <h3>📖 HABER + participe passé</h3>
+      <div class="regle"><strong>-AR → -ado</strong> (hablar → hablado) · <strong>-ER/-IR → -ido</strong> (comer → comido / vivir → vivido)<br>⚠️ Irréguliers : hacer → <em>hecho</em> · ver → <em>visto</em> · decir → <em>dicho</em> · escribir → <em>escrito</em></div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:4px;font-size:.88em;margin-top:7px">
+        <p>yo → <strong style="font-family:'Caveat',cursive;color:var(--rouge)">he comido</strong></p>
+        <p>tú → <strong style="font-family:'Caveat',cursive;color:var(--rouge)">has comido</strong></p>
+        <p>él/ella → <strong style="font-family:'Caveat',cursive;color:var(--rouge)">ha comido</strong></p>
+        <p>nosotros → <strong style="font-family:'Caveat',cursive;color:var(--rouge)">hemos comido</strong></p>
+        <p>vosotros → <strong style="font-family:'Caveat',cursive;color:var(--rouge)">habéis comido</strong></p>
+        <p>ellos → <strong style="font-family:'Caveat',cursive;color:var(--rouge)">han comido</strong></p>
+      </div>
+    </div>
+    <div class="lecon-box theme-exo">
+      <h3>✏️ Exercice — Mets au passé composé</h3>
+      <div class="exo-wrapper" data-exo="s14e1">
+        <div class="exo-item" data-idx="0"><div class="exo-q"><span class="exo-num">1</span><span>Yo _____ (hablar) con mi amigo.</span><input class="answer-input" type="text" data-answer="he hablado"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="1"><div class="exo-q"><span class="exo-num">2</span><span>Tú _____ (comer) una pizza.</span><input class="answer-input" type="text" data-answer="has comido"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="2"><div class="exo-q"><span class="exo-num">3</span><span>Nosotros _____ (hacer) los deberes.</span><input class="answer-input" type="text" data-answer="hemos hecho"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="3"><div class="exo-q"><span class="exo-num">4</span><span>¿Has _____ (ver) esa película?</span><input class="answer-input" type="text" data-answer="visto"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="4">
+          <div class="exo-q"><span class="exo-num">5</span><span>Le participe passé de "hablar" est :</span></div>
+          <div class="qcm-options" data-correct="hablado"><span class="qcm-opt" data-val="hablido">hablido</span><span class="qcm-opt" data-val="hablado">hablado</span><span class="qcm-opt" data-val="habló">habló</span></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <button class="submit-exo-btn" onclick="submitExo(this)">✔ Valider mes réponses</button>
+        <div class="exo-score"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== SÉANCE 16 — SEMANA SANTA (EN ESPAÑOL) ======================== -->
+<div class="page" id="seance16">
+  <div class="page-header">
+    <span class="badge-seance" style="background:var(--rose)">SÉANCE 16</span>
+    <span class="titre-page">La Semana Santa — Comprensión lectora 🕊️</span>
+    <span class="tag-theme tag-cult">Cultura</span>
+  </div>
+  <div class="page-body">
+    <div class="texto">
+      <div class="texto-titre">📜 La Semana Santa en España</div>
+      <p>La <strong>Semana Santa</strong> es una de las fiestas más importantes de España. Se celebra <strong>en primavera</strong>, generalmente en marzo o en abril, durante los siete días antes de la Pascua.</p>
+      <p>Las ciudades más famosas por sus procesiones son Sevilla, Málaga y Granada, en <strong>Andalucía</strong>. En las procesiones, la gente lleva enormes estatuas religiosas llamadas <strong>pasos</strong>. Estas estatuas pesan mucho y son transportadas por hombres y mujeres que se llaman <strong>costaleros</strong>.</p>
+      <p>También hay <strong>bandas de música</strong> que tocan marchas solemnes. Muchas personas llevan <strong>velas encendidas</strong> y visten túnicas. Esta celebración mezcla la fe religiosa con el orgullo regional.</p>
+      <p>Durante la Semana Santa, se come un postre tradicional llamado <strong>torrijas</strong>, que es parecido al pan francés tostado. Es una época de familia, de tradición y de emoción.</p>
+    </div>
+    <div class="lecon-box theme-exo">
+      <h3>📝 Preguntas de comprensión</h3>
+      <div class="exo-wrapper" data-exo="s16e1">
+        <div class="exo-item" data-idx="0">
+          <div class="exo-q"><span class="exo-num">1</span><span>¿En qué estación del año se celebra la Semana Santa?</span></div>
+          <div class="qcm-options" data-correct="en primavera"><span class="qcm-opt" data-val="en invierno">en invierno</span><span class="qcm-opt" data-val="en primavera">en primavera</span><span class="qcm-opt" data-val="en verano">en verano</span></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="1">
+          <div class="exo-q"><span class="exo-num">2</span><span>¿Cómo se llaman las personas que llevan los pasos?</span><input class="answer-input" type="text" data-answer="costaleros|los costaleros"></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="2">
+          <div class="exo-q"><span class="exo-num">3</span><span>¿Qué postre se come durante la Semana Santa?</span><input class="answer-input" type="text" data-answer="torrijas|las torrijas"></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="3">
+          <div class="exo-q"><span class="exo-num">4</span><span>¿Verdadero o falso? : "Las procesiones son solo en Madrid."</span></div>
+          <div class="vf-options" data-correct="falso"><button class="vf-btn" data-val="verdadero">✅ Verdadero</button><button class="vf-btn" data-val="falso">❌ Falso</button></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="4">
+          <div class="exo-q"><span class="exo-num">5</span><span>¿Qué significa "velas encendidas"?</span></div>
+          <div class="qcm-options" data-correct="des bougies allumées"><span class="qcm-opt" data-val="des fleurs rouges">des fleurs rouges</span><span class="qcm-opt" data-val="des bougies allumées">des bougies allumées</span><span class="qcm-opt" data-val="des drapeaux espagnols">des drapeaux espagnols</span></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <button class="submit-exo-btn" onclick="submitExo(this)">✔ Valider mes réponses</button>
+        <div class="exo-score"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== SÉANCE 17 — PICASSO (EN ESPAÑOL) ======================== -->
+<div class="page" id="seance17">
+  <div class="page-header">
+    <span class="badge-seance" style="background:var(--violet)">SÉANCE 17</span>
+    <span class="titre-page">Pablo Picasso — Comprensión lectora 🎨</span>
+    <span class="tag-theme tag-cult">Cultura</span>
+  </div>
+  <div class="page-body">
+    <div class="texto">
+      <div class="texto-titre">🎨 Pablo Picasso, un genio español</div>
+      <p><strong>Pablo Picasso</strong> nació el 25 de octubre de 1881 en <strong>Málaga</strong>, una ciudad del sur de España. Su padre era <strong>pintor</strong> y le enseñó a dibujar desde pequeño. Picasso fue un niño muy talentoso.</p>
+      <p>Cuando era joven, Picasso vivió en <strong>Barcelona</strong> y después se fue a <strong>París</strong>, donde conoció a muchos artistas importantes. Allí pasó por diferentes épocas artísticas.</p>
+      <p>En su <strong>época azul</strong>, pintaba cuadros muy tristes, con colores fríos. En su <strong>época rosa</strong>, los cuadros eran más alegres, con personajes del circo. Más tarde, con el pintor Georges Braque, inventó un nuevo estilo llamado el <strong>cubismo</strong>: las figuras están formadas por <strong>formas geométricas</strong>.</p>
+      <p>Su obra más famosa es <strong>Guernica</strong>, un cuadro enorme que habla del sufrimiento durante la <strong>Guerra Civil Española</strong>. Picasso murió en Francia en <strong>1973</strong>, a los 91 años. Dejó miles de cuadros, esculturas y dibujos.</p>
+    </div>
+    <div class="lecon-box theme-exo">
+      <h3>📝 Preguntas de comprensión</h3>
+      <div class="exo-wrapper" data-exo="s17e1">
+        <div class="exo-item" data-idx="0">
+          <div class="exo-q"><span class="exo-num">1</span><span>¿En qué ciudad nació Picasso?</span><input class="answer-input" type="text" data-answer="málaga|malaga|en málaga|en malaga"></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="1">
+          <div class="exo-q"><span class="exo-num">2</span><span>¿Qué estilo artístico inventó con Georges Braque?</span><input class="answer-input" type="text" data-answer="el cubismo|cubismo"></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="2">
+          <div class="exo-q"><span class="exo-num">3</span><span>¿Cuál es el cuadro más famoso de Picasso?</span><input class="answer-input" type="text" data-answer="guernica|la guernica"></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="3">
+          <div class="exo-q"><span class="exo-num">4</span><span>¿En la época azul, los cuadros eran…?</span></div>
+          <div class="qcm-options" data-correct="tristes"><span class="qcm-opt" data-val="alegres">alegres</span><span class="qcm-opt" data-val="tristes">tristes</span><span class="qcm-opt" data-val="de circo">de circo</span></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="4">
+          <div class="exo-q"><span class="exo-num">5</span><span>¿Verdadero o falso? : "Picasso nació en Barcelona."</span></div>
+          <div class="vf-options" data-correct="falso"><button class="vf-btn" data-val="verdadero">✅ Verdadero</button><button class="vf-btn" data-val="falso">❌ Falso</button></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="5">
+          <div class="exo-q"><span class="exo-num">6</span><span>¿Cuántos años tenía Picasso cuando murió?</span></div>
+          <div class="qcm-options" data-correct="91 años"><span class="qcm-opt" data-val="81 años">81 años</span><span class="qcm-opt" data-val="91 años">91 años</span><span class="qcm-opt" data-val="73 años">73 años</span></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <button class="submit-exo-btn" onclick="submitExo(this)">✔ Valider mes réponses</button>
+        <div class="exo-score"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== BILAN ======================== -->
+<div class="page" id="bilan">
+  <div class="page-header">
+    <span class="badge-seance" style="background:linear-gradient(90deg,var(--rouge),var(--violet))">BILAN</span>
+    <span class="titre-page">Mini-contrôle final 🏆</span>
+    <span class="tag-theme" style="background:rgba(255,190,11,.2);color:#B38800">Révision</span>
+  </div>
+  <div class="page-body">
+    <div class="lecon-box theme-exo">
+      <h3>⭐ Questions de bilan</h3>
+      <div class="exo-wrapper" data-exo="bilan1">
+        <div class="exo-item" data-idx="0"><div class="exo-q"><span class="exo-num">1</span><span>"rouge" en espagnol →</span><input class="answer-input" type="text" data-answer="rojo|roja"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="1"><div class="exo-q"><span class="exo-num">2</span><span>Je suis française (nationalité) → Yo _____ francesa.</span><input class="answer-input" type="text" data-answer="soy"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="2"><div class="exo-q"><span class="exo-num">3</span><span>Elle est fatiguée → Ella _____ cansada.</span><input class="answer-input" type="text" data-answer="está|esta"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="3"><div class="exo-q"><span class="exo-num">4</span><span>J'ai mangé une pizza → Yo _____ _____ una pizza.</span><input class="answer-input" type="text" data-answer="he comido"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="4"><div class="exo-q"><span class="exo-num">5</span><span>Le style inventé par Picasso →</span><input class="answer-input" type="text" data-answer="el cubismo|cubismo|le cubisme"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="5"><div class="exo-q"><span class="exo-num">6</span><span>47 en toutes lettres →</span><input class="answer-input" type="text" data-answer="cuarenta y siete"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="6">
+          <div class="exo-q"><span class="exo-num">7</span><span>Conjugue HABLAR : yo / tú / él / nosotros →</span></div>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin:5px 0 0 29px">
+            <input class="answer-input" type="text" placeholder="yo…" data-answer="hablo">
+            <input class="answer-input" type="text" placeholder="tú…" data-answer="hablas">
+            <input class="answer-input" type="text" placeholder="él…" data-answer="habla">
+            <input class="answer-input" type="text" placeholder="nosotros…" data-answer="hablamos">
+          </div>
+          <div class="feedback-msg"></div>
+        </div>
+        <button class="submit-exo-btn" onclick="submitExo(this)">✔ Valider mon bilan</button>
+        <div class="exo-score"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== SÉANCE BONUS — CARLOS ALCARAZ ======================== -->
+<div class="page" id="bonus">
+  <div class="page-header">
+    <span class="badge-seance" style="background:linear-gradient(90deg,var(--orange),#ff9900)">BONUS</span>
+    <span class="titre-page">Carlos Alcaraz — Una estrella del tenis 🎾</span>
+    <span class="tag-theme tag-cult">Cultura</span>
+  </div>
+  <div class="page-body">
+    <div class="texto">
+      <div class="texto-titre">🎾 Carlos Alcaraz, una estrella española</div>
+      <p><strong>Carlos Alcaraz Garfia</strong> nació el 5 de mayo de 2003 en <strong>El Palmar</strong>, en la región de Murcia. Empezó a jugar al tenis cuando era muy pequeño.</p>
+      <p>En 2022 ganó el <strong>US Open</strong> y se convirtió, con 19 años, en el número uno más joven de la historia del tenis masculino.</p>
+      <p>Después ganó grandes torneos como <strong>Wimbledon</strong> y <strong>Roland Garros</strong>. Desde 2026, su entrenador principal es <strong>Samuel López</strong>, después de varios años con Juan Carlos Ferrero.</p>
+      <p>Carlos juega con energía y creatividad. En España, muchos aficionados le llaman <strong>"Carlitos"</strong>.</p>
+    </div>
+    <div class="lecon-box theme-cult" style="margin-top:14px">
+      <h3>🗣️ Vocabulaire du tennis</h3>
+      <table class="voc-table">
+        <tr><th>Espagnol</th><th>Français</th></tr>
+        <tr><td class="es">el tenis / la raqueta</td><td class="fr">le tennis / la raquette</td></tr>
+        <tr><td class="es">la pelota / la red</td><td class="fr">la balle / le filet</td></tr>
+        <tr><td class="es">el partido / el torneo</td><td class="fr">le match / le tournoi</td></tr>
+        <tr><td class="es">ganar / perder</td><td class="fr">gagner / perdre</td></tr>
+        <tr><td class="es">el campeón / la campeona</td><td class="fr">le champion / la championne</td></tr>
+        <tr><td class="es">el número uno del mundo</td><td class="fr">le numéro un mondial</td></tr>
+        <tr><td class="es">el aficionado / los fans</td><td class="fr">le supporter / les fans</td></tr>
+      </table>
+    </div>
+    <div class="lecon-box theme-exo">
+      <h3>📝 Preguntas sobre Carlos Alcaraz</h3>
+      <div class="exo-wrapper" data-exo="bonus1">
+        <div class="exo-item" data-idx="0"><div class="exo-q"><span class="exo-num">1</span><span>¿De dónde es Carlos Alcaraz?</span><input class="answer-input" type="text" data-answer="de murcia|murcia|de españa|españa|el palmar"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="1"><div class="exo-q"><span class="exo-num">2</span><span>¿Cómo se llama su entrenador principal desde 2026?</span><input class="answer-input" type="text" data-answer="samuel lópez|samuel lopez|samu lópez|samu lopez|lopez|lópez"></div><div class="feedback-msg"></div></div>
+        <div class="exo-item" data-idx="2">
+          <div class="exo-q"><span class="exo-num">3</span><span>"ganar" signifie :</span></div>
+          <div class="qcm-options" data-correct="gagner"><span class="qcm-opt" data-val="perdre">perdre</span><span class="qcm-opt" data-val="gagner">gagner</span><span class="qcm-opt" data-val="jouer">jouer</span></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="3">
+          <div class="exo-q"><span class="exo-num">4</span><span>¿Verdadero o falso? : "Wimbledon se juega en París."</span></div>
+          <div class="vf-options" data-correct="falso"><button class="vf-btn" data-val="verdadero">✅ Verdadero</button><button class="vf-btn" data-val="falso">❌ Falso</button></div>
+          <div class="feedback-msg"></div>
+        </div>
+        <div class="exo-item" data-idx="4"><div class="exo-q"><span class="exo-num">5</span><span>"la raqueta" en français →</span><input class="answer-input" type="text" data-answer="la raquette|raquette"></div><div class="feedback-msg"></div></div>
+        <button class="submit-exo-btn" onclick="submitExo(this)">✔ Valider mes réponses</button>
+        <div class="exo-score"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== FIN DU CAHIER ======================== -->
+<div class="fin-cahier">
+  <div style="font-size:2.5em;margin-bottom:10px">🏆🌟⭐</div>
+  <h2>¡Felicidades, Mathilde!</h2>
+  <p>Tu as terminé ton cahier de révision d'espagnol.</p>
+  <p>Tu maîtrises maintenant les bases essentielles de la 5ème !</p>
+  <p style="margin-top:14px;font-family:'Caveat',cursive;font-size:1.6em">¡Muy bien, campeona! 🇪🇸</p>
+</div>
+
+<div class="signature">
+  <p>📚 Cahier réalisé avec ❤️ par <strong>Audrey</strong> — Professeur d'espagnol</p>
+  <p style="font-size:1em;color:#888;margin-top:4px;font-family:'Nunito',sans-serif">Bonne révision, Mathilde ! N'hésite pas à relire tes cours avant chaque exercice. ¡Buena suerte! 🍀</p>
+</div>
+
+<script>
+/* =====================================================
+   EXERCICE ENGINE
+   ===================================================== */
+const SAVE_KEY = 'mathilde_cahier_v2';
+
+function loadProgress() {
+  try { return JSON.parse(localStorage.getItem(SAVE_KEY)) || {}; } catch(e) { return {}; }
+}
+function saveProgress(data) {
+  try { localStorage.setItem(SAVE_KEY, JSON.stringify(data)); } catch(e) {}
+}
+
+let progress = loadProgress();
+
+function normalizeAnswer(s) {
+  return s.toLowerCase().trim()
+    .replace(/[áàâ]/g,'a').replace(/[éèê]/g,'e').replace(/[íì]/g,'i')
+    .replace(/[óò]/g,'o').replace(/[úù]/g,'u').replace(/ñ/g,'n')
+    .replace(/[¿¡]/g,'').replace(/\s+/g,' ').trim();
+}
+
+function checkAnswer(userAns, correctAns) {
+  const user = normalizeAnswer(userAns);
+  return correctAns.split('|').some(a => normalizeAnswer(a) === user);
+}
+
+function submitExo(btn) {
+  const wrapper = btn.closest('.exo-wrapper');
+  const exoId = wrapper.dataset.exo;
+  const items = wrapper.querySelectorAll('.exo-item');
+  let correct = 0, total = 0;
+
+  items.forEach(item => {
+    const idx = parseInt(item.dataset.idx);
+    const fb = item.querySelector('.feedback-msg');
+
+    // Text inputs
+    const inputs = item.querySelectorAll('.answer-input');
+    inputs.forEach(inp => {
+      total++;
+      const ans = inp.dataset.answer || '';
+      const isOk = checkAnswer(inp.value, ans);
+      inp.classList.add(isOk ? 'correct' : 'wrong');
+      inp.classList.add('disabled');
+      inp.disabled = true;
+      if (isOk) correct++;
+    });
+
+    // QCM
+    const qcmWrap = item.querySelector('.qcm-options');
+    if (qcmWrap) {
+      total++;
+      const correctVal = qcmWrap.dataset.correct;
+      const selected = qcmWrap.querySelector('.qcm-opt.selected');
+      const opts = qcmWrap.querySelectorAll('.qcm-opt');
+      opts.forEach(o => {
+        o.classList.add('disabled');
+        if (normalizeAnswer(o.dataset.val) === normalizeAnswer(correctVal)) o.classList.add('reveal');
+      });
+      if (selected && normalizeAnswer(selected.dataset.val) === normalizeAnswer(correctVal)) {
+        selected.classList.remove('selected'); selected.classList.add('correct');
+        correct++;
+        if (fb) { fb.textContent = '✓ Correcto!'; fb.className = 'feedback-msg correct'; }
+      } else {
+        if (selected) { selected.classList.remove('selected'); selected.classList.add('wrong'); }
+        if (fb) { fb.textContent = '✗ La bonne réponse est : ' + correctVal; fb.className = 'feedback-msg wrong'; }
+      }
+      return;
+    }
+
+    // VF
+    const vfWrap = item.querySelector('.vf-options');
+    if (vfWrap) {
+      total++;
+      const correctVal = vfWrap.dataset.correct;
+      const selected = vfWrap.querySelector('.vf-btn.selected');
+      vfWrap.querySelectorAll('.vf-btn').forEach(b => b.classList.add('disabled'));
+      if (selected && normalizeAnswer(selected.dataset.val) === normalizeAnswer(correctVal)) {
+        selected.classList.remove('selected'); selected.classList.add('correct');
+        correct++;
+        if (fb) { fb.textContent = '✓ ¡Correcto!'; fb.className = 'feedback-msg correct'; }
+      } else {
+        if (selected) { selected.classList.remove('selected'); selected.classList.add('wrong'); }
+        if (fb) { fb.textContent = '✗ Réponse : ' + correctVal; fb.className = 'feedback-msg wrong'; }
+      }
+      return;
+    }
+
+    // Text input feedback
+    if (inputs.length > 0 && fb) {
+      const allOk = Array.from(inputs).every(i => i.classList.contains('correct'));
+      if (allOk) { fb.textContent = '✓ Parfait !'; fb.className = 'feedback-msg correct'; }
+      else {
+        const corrections = Array.from(inputs).map(i => {
+          if (!i.classList.contains('correct')) return i.dataset.answer.split('|')[0];
+          return null;
+        }).filter(Boolean);
+        fb.textContent = '✗ Réponse(s) attendue(s) : ' + corrections.join(' / '); fb.className = 'feedback-msg wrong';
+      }
+    }
+  });
+
+  // Score display
+  const scoreDiv = wrapper.querySelector('.exo-score');
+  const pct = total > 0 ? Math.round((correct/total)*100) : 0;
+  scoreDiv.className = 'exo-score ' + (pct >= 70 ? 'good' : 'bad');
+  const emoji = pct === 100 ? '🏆' : pct >= 70 ? '👍' : '💪';
+  scoreDiv.textContent = emoji + ' ' + correct + ' / ' + total + ' correct' + (correct > 1 ? 's' : '') + ' (' + pct + '%)';
+
+  btn.disabled = true; btn.textContent = '✔ Réponses validées';
+
+  // Save
+  if (!progress[exoId] || progress[exoId].score < correct) {
+    progress[exoId] = { score: correct, total, done: true };
+    saveProgress(progress);
+  }
+  updateProgressBar();
+}
+
+// QCM click
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('qcm-opt') && !e.target.classList.contains('disabled')) {
+    const wrap = e.target.closest('.qcm-options');
+    wrap.querySelectorAll('.qcm-opt').forEach(o => o.classList.remove('selected'));
+    e.target.classList.add('selected');
+  }
+  if (e.target.classList.contains('vf-btn') && !e.target.classList.contains('disabled')) {
+    const wrap = e.target.closest('.vf-options');
+    wrap.querySelectorAll('.vf-btn').forEach(b => b.classList.remove('selected'));
+    e.target.classList.add('selected');
+  }
+});
+
+function updateProgressBar() {
+  const exoIds = ['s1e1','s2e1','s3e1','s4e1','s10e1','s12e1','s13e1','s14e1','s16e1','s17e1','bilan1','bonus1'];
+  const done = exoIds.filter(id => progress[id] && progress[id].done).length;
+  const pct = Math.round((done / exoIds.length) * 100);
+  document.getElementById('pbFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = done + ' / ' + exoIds.length + ' exercices validés';
+}
+
+// Restore saved state on load
+function restoreProgress() {
+  document.querySelectorAll('.exo-wrapper').forEach(wrapper => {
+    const exoId = wrapper.dataset.exo;
+    if (progress[exoId] && progress[exoId].done) {
+      const btn = wrapper.querySelector('.submit-exo-btn');
+      if (btn) { btn.disabled = true; btn.textContent = '✔ Déjà validé (' + progress[exoId].score + '/' + progress[exoId].total + ')'; }
+    }
+  });
+  updateProgressBar();
+}
+restoreProgress();
+
+</script>
+</body>
+</html>
